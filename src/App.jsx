@@ -24,13 +24,14 @@ class App extends Component {
     this.setState({
       messages: newMessages
     });
+    this.addMessage = this.addMessage.bind(this)
   }
 
   render() {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <ChatBar addMessageToList={this.addMessage.bind(this)} />
+        <ChatBar addMessageToList={this.addMessage} />
       </div>
     );
   }
