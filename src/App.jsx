@@ -23,6 +23,7 @@ class App extends Component {
     };
     const newMessages = this.state.messages.concat(newMessage);
     this.setState({
+      currentUser: newMessage.username,
       messages: newMessages
     });
     this.addMessage = this.addMessage.bind(this)
