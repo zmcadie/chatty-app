@@ -13,7 +13,6 @@ class App extends Component {
       ]
     };
   }
-
   addMessage(message) {
     const newMessage = {
       id: Math.random(),
@@ -28,7 +27,6 @@ class App extends Component {
     });
     this.addMessage = this.addMessage.bind(this)
   }
-
   render() {
     return (
       <div>
