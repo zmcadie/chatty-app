@@ -6,6 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentUser: {name: "Anonymous"},
       messages: [
         {id: 1, type: "message", username: "Anonymous1", content: "I won't be impressed with technology until I can download food."},
         {id: 2, type: "system", content: "Anonymous1 changed their name to nomnom."}
@@ -31,7 +32,7 @@ class App extends Component {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <ChatBar addMessageToList={this.addMessage} />
+        <ChatBar addMessageToList={this.addMessage} currentUser={this.state.currentUser} />
       </div>
     );
   }
