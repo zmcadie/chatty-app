@@ -11,10 +11,9 @@ class App extends Component {
       messages: []
     };
     this.addMessage = this.addMessage.bind(this);
-    this.socket = newSocket
   }
   componentDidMount() {
-    if (this.socket) console.log("Connected to server");
+    if (newSocket) console.log("Connected to server");
   }
   addMessage(message) {
     const newMessage = {
@@ -28,7 +27,7 @@ class App extends Component {
       currentUser: newMessage.username,
       messages: newMessages
     });
-    this.socket.send(`${message.username} says ${message.content}`);
+    newSocket.send(`${message.username} says ${message.content}`);
   }
   render() {
     return (
