@@ -2,19 +2,13 @@ import React, {Component} from "react";
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
 const newSocket = new WebSocket("ws://localhost:3001");
-newSocket.onopen = (event) => {
-  newSocket.send("hello server")
-}
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       currentUser: {name: "Anonymous1"},
-      messages: [
-        {id: 1, type: "message", username: "Anonymous1", content: "I won't be impressed with technology until I can download food."},
-        {id: 2, type: "system", content: "Anonymous1 changed their name to nomnom."}
-      ]
+      messages: []
     };
     this.addMessage = this.addMessage.bind(this);
     this.socket = newSocket
