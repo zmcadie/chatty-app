@@ -10,7 +10,12 @@ class ChatBar extends Component {
   render() {
     return (
       <footer className="chatbar">
-        <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={this.state.user}/>
+        <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={this.state.user} onKeyUp={(event) => {
+          const username = event.target.value
+          this.setState({
+            user: username
+          });
+        }} />
         <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyDown={(event) => {
           if (event.key === "Enter") {
             const message = {
