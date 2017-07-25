@@ -12,6 +12,7 @@ class App extends Component {
         {id: 2, type: "system", content: "Anonymous1 changed their name to nomnom."}
       ]
     };
+    this.addMessage = this.addMessage.bind(this);
   }
   addMessage(message) {
     const newMessage = {
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <ChatBar addMessageToList={this.addMessage.bind(this)} currentUser={this.state.currentUser} />
+        <ChatBar addMessageToList={this.addMessage} currentUser={this.state.currentUser} />
       </div>
     );
   }

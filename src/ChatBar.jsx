@@ -7,6 +7,8 @@ class ChatBar extends Component {
       currentUser: this.props.currentUser.name,
       user: this.props.currentUser.name
     };
+    this.ifEnter = this.ifEnter.bind(this);
+    this.userChange = this.userChange.bind(this);
   }
   ifEnter(event) {
     if (event.key === "Enter") {
@@ -28,8 +30,8 @@ class ChatBar extends Component {
   render() {
     return (
       <footer className="chatbar">
-        <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={this.state.user} onKeyUp={this.userChange.bind(this)} />
-        <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyDown={this.ifEnter.bind(this)} />
+        <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={this.state.user} onKeyUp={this.userChange} />
+        <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyDown={this.ifEnter} />
       </footer>
     );
   }
