@@ -25,7 +25,6 @@ class App extends Component {
       currentUser: newMessage.username,
       messages: newMessages
     });
-    this.addMessage = this.addMessage.bind(this)
   }
   render() {
     return (
