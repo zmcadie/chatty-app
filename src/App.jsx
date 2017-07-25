@@ -2,6 +2,9 @@ import React, {Component} from "react";
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
 const newSocket = new WebSocket("ws://localhost:3001");
+newSocket.onopen = (event) => {
+  newSocket.send("hello server")
+}
 
 class App extends Component {
   constructor() {
@@ -17,7 +20,7 @@ class App extends Component {
     this.socket = newSocket
   }
   componentDidMount() {
-    if (this.socket) console.log("Connected to server")
+    if (this.socket) console.log("Connected to server");
   }
   addMessage(message) {
     const newMessage = {
@@ -31,6 +34,7 @@ class App extends Component {
       currentUser: newMessage.username,
       messages: newMessages
     });
+    this.socket.send(`${message.username} says ${message.content}`);
   }
   render() {
     return (
