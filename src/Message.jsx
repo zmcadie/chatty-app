@@ -4,7 +4,7 @@ class Message extends Component {
   render() {
     const isSystem = this.props.message.type;
     let messageContainer = null;
-    if (isSystem === "system") {
+    if (isSystem === "incomingSystemMessage") {
       messageContainer = <div id={this.props.message.id} className="message system">
           {this.props.message.content}
         </div>

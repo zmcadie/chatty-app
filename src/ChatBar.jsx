@@ -12,7 +12,7 @@ class ChatBar extends Component {
   ifEnter(event) {
     if (event.key === "Enter") {
       const message = {
-        type: "message",
+        type: "postMessage",
         content: event.target.value
       }
       this.props.sendMessage(message);
@@ -23,7 +23,7 @@ class ChatBar extends Component {
     if (event.key === "Enter") {
       const username = event.target.value;
       const message = {
-        type: "system",
+        type: "postSystemMessage",
         username: null,
         content: `${this.state.user} changed their username to ${username}`
       }
