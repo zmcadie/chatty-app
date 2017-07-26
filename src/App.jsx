@@ -21,10 +21,12 @@ class App extends Component {
     newSocket.addEventListener("message", this.showMessage);
   }
   sendMessage(message) {
+    debugger;
+    message.username = this.state.currentUser.name;
     newSocket.send(JSON.stringify(message));
   }
   changeUsername(username) {
-    this.setState({ currentUser: { name: username} })
+    this.setState({ currentUser: {name: username} })
   }
   showMessage(message) {
     message = JSON.parse(message.data);
