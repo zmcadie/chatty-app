@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
-const newSocket = new WebSocket("ws://localhost:3001");
 
 class App extends Component {
   constructor() {
@@ -13,17 +12,17 @@ class App extends Component {
     this.changeUsername = this.changeUsername.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.showMessage = this.showMessage.bind(this);
+    this.socket = new WebSocket("ws://localhost:3001");
   }
   componentDidMount() {
-    newSocket.addEventListener("open", (event) => {
+    this.socket.addEventListener("open", (event) => {
       console.log("Connected to server");
     });
-    newSocket.addEventListener("message", this.showMessage);
+    this.socket.addEventListener("message", this.showMessage);
   }
   sendMessage(message) {
-    debugger;
     message.username = this.state.currentUser.name;
-    newSocket.send(JSON.stringify(message));
+    this.socket.send(JSON.stringify(message));
   }
   changeUsername(username) {
     this.setState({ currentUser: {name: username} })
