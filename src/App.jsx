@@ -18,6 +18,7 @@ class App extends Component {
   componentDidMount() {
     this.socket.addEventListener("open", (event) => {
       console.log("Connected to server");
+      this.socket.send(JSON.stringify({type: "initialConnect", content: `${this.state.currentUser.name} has joined the chat`}))
     });
     this.socket.addEventListener("message", this.showMessage);
   }
@@ -29,16 +30,13 @@ class App extends Component {
     this.setState({ currentUser: {name: username} })
   }
   showMessage(message) {
+    debugger;
     message = JSON.parse(message.data);
-    switch (message.type) {
-      case "incomingUserNumber":
+      if (message.userNumber) {
         this.setState({numberOfUsers: message.userNumber})
-        break;
-      default:
-        const newMessages = this.state.messages.concat(message);
-        this.setState({ messages: newMessages });
-        break;
-    }
+      }
+      const newMessages = this.state.messages.concat(message);
+      this.setState({ messages: newMessages });
   }
   render() {
     return (
