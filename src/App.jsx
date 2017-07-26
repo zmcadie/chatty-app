@@ -28,7 +28,6 @@ class App extends Component {
     this.setState({ currentUser: {name: username} })
   }
   showMessage(message) {
-    debugger;
     message = JSON.parse(message.data);
     const newMessages = this.state.messages.concat(message);
     this.setState({ messages: newMessages });
