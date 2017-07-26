@@ -10,30 +10,32 @@ class App extends Component {
       currentUser: {name: "Anonymous1"},
       messages: []
     };
-    this.addMessage = this.addMessage.bind(this);
+    this.changeUsername = this.changeUsername.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
+    this.showMessage = this.showMessage.bind(this);
   }
   componentDidMount() {
-    if (newSocket) console.log("Connected to server");
-  }
-  addMessage(message) {
-    const newMessage = {
-      id: Math.random(),
-      type: message.type,
-      username: message.username,
-      content: message.content
-    };
-    const newMessages = this.state.messages.concat(newMessage);
-    this.setState({
-      currentUser: newMessage.username,
-      messages: newMessages
+    newSocket.addEventListener("open", (event) => {
+      console.log("Connected to server");
     });
-    newSocket.send(`${message.username} says ${message.content}`);
+    newSocket.addEventListener("message", this.showMessage);
+  }
+  sendMessage(message) {
+    newSocket.send(JSON.stringify(message));
+  }
+  changeUsername(username) {
+    this.setState({ currentUser: { name: username} })
+  }
+  showMessage(message) {
+    message = JSON.parse(message.data);
+    const newMessages = this.state.messages.concat(message);
+    this.setState({ messages: newMessages });
   }
   render() {
     return (
       <div>
         <MessageList messages={this.state.messages} />
-        <ChatBar addMessageToList={this.addMessage} currentUser={this.state.currentUser} />
+        <ChatBar sendMessage={this.sendMessage} currentUser={this.state.currentUser} changeUsername={this.changeUsername}/>
       </div>
     );
   }
