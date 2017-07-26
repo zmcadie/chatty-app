@@ -6,7 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: {name: "Anonymous1"},
+      numberOfUsers: 1,
+      currentUser: {name: "Anonymous"},
       messages: []
     };
     this.changeUsername = this.changeUsername.bind(this);
@@ -29,13 +30,20 @@ class App extends Component {
   }
   showMessage(message) {
     message = JSON.parse(message.data);
-    const newMessages = this.state.messages.concat(message);
-    this.setState({ messages: newMessages });
+    switch (message.type) {
+      case "incomingUserNumber":
+        this.setState({numberOfUsers: message.userNumber})
+        break;
+      default:
+        const newMessages = this.state.messages.concat(message);
+        this.setState({ messages: newMessages });
+        break;
+    }
   }
   render() {
     return (
       <div>
-        <MessageList messages={this.state.messages} />
+        <MessageList messages={this.state.messages} users={this.state.numberOfUsers}/>
         <ChatBar sendMessage={this.sendMessage} currentUser={this.state.currentUser} changeUsername={this.changeUsername}/>
       </div>
     );

@@ -3,14 +3,19 @@ import Message from "./Message.jsx";
 
 class MessageList extends Component {
   render() {
-    const messages =
-    this.props.messages.map((message) => {
+    const messages = this.props.messages.map((message) => {
       return <Message key={message.id} message={message} />
     })
     return (
-      <main className="messages">
-        {messages}
-      </main>
+      <div>
+        <nav className="navbar">
+          <a href="/" className="navbar-brand">Chatty</a>
+          <div>{this.props.users} users online</div>
+        </nav>
+        <main className="messages">
+          {messages}
+        </main>
+      </div>
     )
   }
 }
