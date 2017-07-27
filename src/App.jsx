@@ -18,19 +18,30 @@ class App extends Component {
   componentDidMount() {
     this.socket.addEventListener("open", (event) => {
       console.log("Connected to server");
-      this.socket.send(JSON.stringify({type: "initialConnect", content: `${this.state.currentUser.name} has joined the chat`}))
+      this.socket.send(JSON.stringify({type: "initialConnect", username: this.state.currentUser.name, content: `${this.state.currentUser.name} has joined the chat`}));
     });
     this.socket.addEventListener("message", this.showMessage);
+    this.socket.addEventListener("close", (event) => {
+      this.socket.send(JSON.stringify({type: "connectionClose", content: `${this.state.currentUser.name} has left the chat`}));
+    });
   }
   sendMessage(message) {
     message.username = this.state.currentUser.name;
     this.socket.send(JSON.stringify(message));
   }
-  changeUsername(username) {
-    this.setState({ currentUser: {name: username} })
+  changeUsername(event) {
+    if (event.key === "Enter") {
+      const username = event.target.value;
+      const message = {
+        type: "postSystemMessage",
+        username: username,
+        content: `${this.state.currentUser.name} changed their username to ${username}`
+      }
+      this.setState({ currentUser: { name: username } });
+      this.sendMessage(message);
+    }
   }
   showMessage(message) {
-    debugger;
     message = JSON.parse(message.data);
       if (message.userNumber) {
         this.setState({numberOfUsers: message.userNumber})
