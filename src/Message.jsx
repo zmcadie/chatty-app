@@ -20,7 +20,7 @@ class Message extends Component {
             <span className="message-username" style={this.props.message.colour}>{this.props.message.username}</span>
             <span className="message-content">
               <div>{this.props.message.content}</div>
-              <img src={this.props.message.imageUrl} style={{height: "auto", maxWidth: "60vw"}}/>
+              <img src={this.props.message.imageUrl} className="message-image"/>
             </span>
           </div>;
         break;

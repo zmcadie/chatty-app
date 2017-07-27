@@ -11,7 +11,7 @@ class MessageList extends Component {
       <div>
         <nav className="navbar">
           <a href="/" className="navbar-brand">Chatty</a>
-          <div>{this.props.users} users online</div>
+          <div className="navbar-counter">{this.props.users} users online</div>
         </nav>
         <main className="messages">
           {messages}

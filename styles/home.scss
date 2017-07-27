@@ -61,6 +61,11 @@ body {
   flex: 15;
 }
 
+.message-image {
+  height: auto;
+  max-width: 75%;
+}
+
 .message-username {
   flex: 2;
   font-weight: 700;
@@ -88,3 +93,8 @@ body {
   padding: 0 10px;
   text-decoration: none;
 }
+
+.navbar-counter {
+  line-height: 60px;
+}
+

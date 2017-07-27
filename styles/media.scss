@@ -1,14 +1,25 @@
 @media (max-width: 700px) {
+
+  body {
+    margin-bottom: 120px;
+  }
+
   .message {
-    display: block;
+    flex-direction: column;
   }
+
   .chatbar {
-    display: block;
+    flex-direction: column;
   }
-  .chatbar-username {
-    width: 90vw;
+
+  .message-image {
+    max-width: 75%;
   }
-  .chatbar-message {
-    width: 90vw;
+
+  @media (max-width: 600px) {
+
+    .message-image {
+      max-width: 90%
+    }
   }
 }
