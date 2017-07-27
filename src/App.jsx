@@ -48,11 +48,11 @@ class App extends Component {
   }
   showMessage(message) {
     message = JSON.parse(message.data);
-      if (message.userNumber) {
-        this.setState({numberOfUsers: message.userNumber})
-      }
-      const newMessages = this.state.messages.concat(message);
-      this.setState({ messages: newMessages });
+    if (message.userNumber) {
+      this.setState({numberOfUsers: message.userNumber})
+    }
+    const newMessages = this.state.messages.concat(message);
+    this.setState({ messages: newMessages });
   }
 
   render() {
