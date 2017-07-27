@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 class Message extends Component {
+
   render() {
     let messageContainer = null;
     switch (this.props.message.type) {

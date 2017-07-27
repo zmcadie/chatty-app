@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 class ChatBar extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +19,7 @@ class ChatBar extends Component {
       event.target.value = "";
     }
   }
+
   render() {
     return (
       <footer className="chatbar">

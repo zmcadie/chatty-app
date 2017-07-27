@@ -3,6 +3,7 @@ import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
 
 class App extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -31,6 +32,7 @@ class App extends Component {
   }
   changeUsername(event) {
     if (event.key === "Enter") {
+      debugger;
       const username = event.target.value;
       const message = {
         type: "postSystemMessage",
@@ -38,7 +40,8 @@ class App extends Component {
         content: `${this.state.currentUser.name} changed their username to ${username}`
       }
       this.setState({ currentUser: { name: username } });
-      this.sendMessage(message);
+      // not calling sendMessage func because asynchronus setState, func sends old username to server causing delay in change
+      this.socket.send(JSON.stringify(message));
     }
   }
   showMessage(message) {
@@ -49,6 +52,7 @@ class App extends Component {
       const newMessages = this.state.messages.concat(message);
       this.setState({ messages: newMessages });
   }
+
   render() {
     return (
       <div>
