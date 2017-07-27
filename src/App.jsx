@@ -27,6 +27,9 @@ class App extends Component {
     });
   }
   sendMessage(message) {
+    if (message.content.match(/https?:\/\/.*\.(png|jpe?g|gif)/)) {
+      message.type = "postImageMessage";
+    }
     message.username = this.state.currentUser.name;
     this.socket.send(JSON.stringify(message));
   }

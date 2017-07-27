@@ -11,6 +11,16 @@ class Message extends Component {
             {this.props.message.content}
           </div>;
         break;
+      case "incomingImageMessage":
+        messageContainer =
+          <div className="message">
+            <span className="message-username" style={this.props.message.colour}>{this.props.message.username}</span>
+            <span className="message-content">
+              <div>{this.props.message.content}</div>
+              <img src={this.props.message.imageUrl} style={{height: "auto", maxWidth: "60vw"}}/>
+            </span>
+          </div>;
+        break;
       default:
         messageContainer =
           <div className="message">
