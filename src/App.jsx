@@ -32,7 +32,6 @@ class App extends Component {
   }
   changeUsername(event) {
     if (event.key === "Enter") {
-      debugger;
       const username = event.target.value;
       const message = {
         type: "postSystemMessage",
