@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 
 class ChatBar extends Component {
 
@@ -7,24 +7,33 @@ class ChatBar extends Component {
     this.state = {
       user: this.props.currentUser.name,
     };
-    this.ifEnter = this.ifEnter.bind(this);
+    this.sendIfEnter = this.sendIfEnter.bind(this);
+    this.changeUserIfEnter = this.changeUserIfEnter.bind(this);
   }
-  ifEnter(event) {
-    if (event.key === "Enter") {
+
+  sendIfEnter(event) {
+    if (event.key === 'Enter') {
       const message = {
-        type: "postMessage",
+        type: 'postMessage',
         content: event.target.value
       }
       this.props.sendMessage(message);
-      event.target.value = "";
+      event.target.value = '';
+    }
+  }
+
+  changeUserIfEnter(event) {
+    if (event.key === 'Enter') {
+      const username = event.target.value;
+      this.props.changeUsername(username);
     }
   }
 
   render() {
     return (
-      <footer className="chatbar">
-        <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={this.state.user} onKeyDown={this.props.changeUsername} />
-        <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyDown={this.ifEnter} />
+      <footer className='chatbar'>
+        <input className='chatbar-username' placeholder='Your Name (Optional)' onKeyDown={this.changeUserIfEnter} />
+        <input className='chatbar-message' placeholder='Type a message and hit ENTER' onKeyDown={this.sendIfEnter} />
       </footer>
     );
   }
