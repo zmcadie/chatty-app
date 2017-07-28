@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
+import SideBar from "./SideBar.jsx";
 
 class App extends Component {
 
@@ -58,6 +59,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <SideBar currentUser={this.state.currentUser}/>
         <MessageList messages={this.state.messages} users={this.state.numberOfUsers}/>
         <ChatBar sendMessage={this.sendMessage} currentUser={this.state.currentUser} changeUsername={this.changeUsername}/>
       </div>

@@ -7,6 +7,7 @@ class Message extends Component {
 
   render() {
     let messageContainer = null;
+    const username = <span className="message-username" style={this.props.message.colour}>{this.props.message.username}</span>;
     switch (this.props.message.type) {
       case "incomingSystemMessage":
         messageContainer =
@@ -17,7 +18,7 @@ class Message extends Component {
       case "incomingImageMessage":
         messageContainer =
           <div className="message">
-            <span className="message-username" style={this.props.message.colour}>{this.props.message.username}</span>
+            {username}
             <span className="message-content">
               <div>{this.props.message.content}</div>
               <img src={this.props.message.imageUrl} className="message-image"/>
@@ -27,7 +28,7 @@ class Message extends Component {
       default:
         messageContainer =
           <div className="message">
-            <span className="message-username" style={this.props.message.colour}>{this.props.message.username}</span>
+            {username}
             <span className="message-content">{this.props.message.content}</span>
           </div>;
         break;

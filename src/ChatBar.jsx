@@ -5,7 +5,7 @@ class ChatBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.currentUser.name
+      user: this.props.currentUser.name,
     };
     this.ifEnter = this.ifEnter.bind(this);
   }
