@@ -3,6 +3,8 @@ import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
 import SideBar from "./SideBar.jsx";
 
+const colors = ["one", "two", "three", "four", "five", "six"];
+
 class App extends Component {
 
   constructor() {
@@ -17,10 +19,27 @@ class App extends Component {
     this.showMessage = this.showMessage.bind(this);
     this.socket = new WebSocket("ws://localhost:3001");
   }
+  setColor(message) {
+    const num = Math.floor(Math.random() * colors.length);
+    const body = document.querySelector("body");
+    const color = colors[num];
+    this.setState({color: color});
+    body.setAttribute("class", `color-${color}`);
+    message.color = `text-${color}`
+  }
+  initialConnect() {
+    const message = {
+      type: "initialConnect",
+      username: this.state.currentUser.name,
+      content: `${this.state.currentUser.name} has joined the chat`,
+    }
+    this.setColor(message);
+    this.socket.send(JSON.stringify(message));
+  }
   componentDidMount() {
     this.socket.addEventListener("open", (event) => {
       console.log("Connected to server");
-      this.socket.send(JSON.stringify({type: "initialConnect", username: this.state.currentUser.name, content: `${this.state.currentUser.name} has joined the chat`}));
+      this.initialConnect();
     });
     this.socket.addEventListener("message", this.showMessage);
     this.socket.addEventListener("close", (event) => {
@@ -31,6 +50,7 @@ class App extends Component {
     if (message.content.match(/https?:\/\/.*\.(png|jpe?g|gif)/)) {
       message.type = "postImageMessage";
     }
+    message.color = this.state.color;
     message.username = this.state.currentUser.name;
     this.socket.send(JSON.stringify(message));
   }
@@ -60,8 +80,8 @@ class App extends Component {
     return (
       <div>
         <SideBar currentUser={this.state.currentUser}/>
-        <MessageList messages={this.state.messages} users={this.state.numberOfUsers}/>
-        <ChatBar sendMessage={this.sendMessage} currentUser={this.state.currentUser} changeUsername={this.changeUsername}/>
+        <MessageList messages={this.state.messages} users={this.state.numberOfUsers} />
+        <ChatBar sendMessage={this.sendMessage} currentUser={this.state.currentUser} changeUsername={this.changeUsername} />
       </div>
     );
   }

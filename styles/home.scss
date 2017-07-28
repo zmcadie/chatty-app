@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
+$basic-border: 1px solid black;
 
-$brand-primary: #39CCCC;
 
 body {
-  background: $brand-primary;
   color: black;
   display: flex;
   flex-direction: row;
@@ -33,14 +32,14 @@ body {
 }
 
 .chatbar-message {
-  border: 1px solid black;
+  border: $basic-border;
   border-radius: 5px;
   flex: 8;
 }
 
 .chatbar-username {
-  display: none;
-  border: 1px solid black;
+  border: $basic-border;
+  border-radius: 5px;
   flex: 2;
 }
 
@@ -55,6 +54,7 @@ body {
 
 .messages {
   background-color: white;
+  border: $basic-border;
   border-radius: 10px;
   flex: 8;
   height: 60vh;

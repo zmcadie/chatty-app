@@ -8,7 +8,8 @@ class Message extends Component {
 
   render() {
     let messageContainer = null;
-    const username = <span className="message-username" style={this.props.message.colour}>{this.props.message.username}</span>;
+    const userClass = `message-username text-${this.props.message.color}`;
+    const username = <span className={userClass}>{this.props.message.username}</span>;
     switch (this.props.message.type) {
       case "incomingSystemMessage":
         messageContainer =
