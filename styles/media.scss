@@ -1,19 +1,53 @@
+@media (max-height: 415px) {
+  .messages {
+    height: 55vh;
+  }
+}
+
+@media (max-height: 340px) {
+  .messages {
+    height: 50vh;
+  }
+}
+
 @media (max-width: 700px) {
 
   body {
     margin-bottom: 120px;
   }
 
-  .message {
-    flex-direction: column;
-  }
-
   .chatbar {
     flex-direction: column;
   }
 
+  .message {
+    flex-direction: column;
+  }
+
+  .messages {
+    height: 55vh;
+  }
+
   .message-image {
     max-width: 75%;
+  }
+
+  @media (max-height: 540px) {
+    .messages {
+      height: 50vh;
+    }
+  }
+
+  @media (max-height: 460px) {
+    .messages {
+      height: 45vh;
+    }
+  }
+
+  @media (max-height: 390px) {
+    .messages {
+      height: 40vh;
+    }
   }
 
   @media (max-width: 600px) {

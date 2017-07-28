@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
-import SideBar from "./SideBar.jsx";
 
 const colors = ["one", "two", "three", "four", "five", "six"];
 
@@ -36,16 +35,6 @@ class App extends Component {
     this.setColor(message);
     this.socket.send(JSON.stringify(message));
   }
-  componentDidMount() {
-    this.socket.addEventListener("open", (event) => {
-      console.log("Connected to server");
-      this.initialConnect();
-    });
-    this.socket.addEventListener("message", this.showMessage);
-    this.socket.addEventListener("close", (event) => {
-      this.socket.send(JSON.stringify({type: "connectionClose", content: `${this.state.currentUser.name} has left the chat`}));
-    });
-  }
   sendMessage(message) {
     if (message.content.match(/https?:\/\/.*\.(png|jpe?g|gif)/)) {
       message.type = "postImageMessage";
@@ -75,11 +64,20 @@ class App extends Component {
     const newMessages = this.state.messages.concat(message);
     this.setState({ messages: newMessages });
   }
+  componentDidMount() {
+    this.socket.addEventListener("open", (event) => {
+      console.log("Connected to server");
+      this.initialConnect();
+    });
+    this.socket.addEventListener("message", this.showMessage);
+    this.socket.addEventListener("close", (event) => {
+      this.socket.send(JSON.stringify({type: "connectionClose", content: `${this.state.currentUser.name} has left the chat`}));
+    });
+  }
 
   render() {
     return (
       <div>
-        <SideBar currentUser={this.state.currentUser}/>
         <MessageList messages={this.state.messages} users={this.state.numberOfUsers} />
         <ChatBar sendMessage={this.sendMessage} currentUser={this.state.currentUser} changeUsername={this.changeUsername} />
       </div>
