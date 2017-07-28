@@ -2,7 +2,8 @@ import React, {Component} from "react";
 
 class Message extends Component {
   componentDidMount() {
-    window.scrollTo(0, document.body.scrollHeight);
+    const element = document.getElementById(this.props.message.id);
+    element.scrollIntoView();
   }
 
   render() {
@@ -17,7 +18,7 @@ class Message extends Component {
         break;
       case "incomingImageMessage":
         messageContainer =
-          <div className="message">
+          <div id={this.props.message.id} className="message">
             {username}
             <span className="message-content">
               <div>{this.props.message.content}</div>
@@ -27,7 +28,7 @@ class Message extends Component {
         break;
       default:
         messageContainer =
-          <div className="message">
+          <div id={this.props.message.id} className="message">
             {username}
             <span className="message-content">{this.props.message.content}</span>
           </div>;
