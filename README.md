@@ -1,45 +1,28 @@
-React Boilerplate
-=====================
+# Chatty
 
-A minimal and light dev environment for ReactJS.
+Chatty is for... chatting! A simple, stripped down chatroom that allows users to communicate with whoever's online.
 
-### Usage
+!["main view"](https://github.com/zmcadie/chatty-app/tree/master/docs/chatty-init.png?raw=true)
 
-Clone the boilerplate and create your own git repo.
+### Getting Started
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+Chatty is low-profile, no databases, no fuss.
+Clone this repository and *make sure to clone the server as well* from :
+<https://github.com/zmcadie/chatty-app-server>
 
-Install the dependencies and start the server.
-
-```
-npm install
-npm start
-open http://localhost:3000
-```
-
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
+Don't forget to install the dependencies with:
+`npm install`
+And run the server and the application in seperate consoles with:
+`npm start`
 
 ### Dependencies
 
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+- react
+- Node 5.10.x or above
+
+### Built With
+
+React - To build the simple user interface
+Websockets - To manage real-time server communication
+
+!["three user view"](https://github.com/zmcadie/chatty-app/tree/master/docs/triple-screen.png?raw=true)
