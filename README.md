@@ -22,7 +22,8 @@ And run the server and the application in seperate consoles with:
 
 ### Built With
 
-React - To build the simple user interface
-Websockets - To manage real-time server communication
+- React - To build the simple user interface
+- Websockets - To manage real-time server communication
+---
 
 !["three user view"](https://github.com/zmcadie/chatty-app/blob/master/docs/triple-screen.png?raw=true)
