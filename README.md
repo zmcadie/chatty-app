@@ -2,7 +2,7 @@
 
 Chatty is for... chatting! A simple, stripped down chatroom that allows users to communicate with whoever's online.
 
-!["main view"](https://github.com/zmcadie/chatty-app/tree/master/docs/chatty-init.png?raw=true)
+!["main view"](https://github.com/zmcadie/chatty-app/blob/master/docs/chatty-init.png?raw=true)
 
 ### Getting Started
 
@@ -25,4 +25,4 @@ And run the server and the application in seperate consoles with:
 React - To build the simple user interface
 Websockets - To manage real-time server communication
 
-!["three user view"](https://github.com/zmcadie/chatty-app/tree/master/docs/triple-screen.png?raw=true)
+!["three user view"](https://github.com/zmcadie/chatty-app/blob/master/docs/triple-screen.png?raw=true)
