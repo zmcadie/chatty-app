@@ -22,6 +22,7 @@ And run the server and the application in seperate consoles with:
 
 ### Built With
 
+- NodeJS - JavaScript runtime
 - React - To build the simple user interface
 - Websockets - To manage real-time server communication
 ---
